@@ -1,42 +1,274 @@
-#root {
+/* ==============================
+   Global CSS Variables (Themes)
+   ============================== */
+ 
+.app-root--light {
+  /* Core */
+  --bg-base:           #f8fafc;
+  --card-bg:           #ffffff;
+  --sidebar-bg:        #ffffff;
+  --sidebar-bottom-bg: rgba(248, 250, 252, 0.5);
+ 
+  /* Text */
+  --text-primary:   #0f172a;
+  --text-secondary: #334155;
+  --text-muted:     #64748b;
+ 
+  /* Borders */
+  --border-color: #e2e8f0;
+  --border-light: #f1f5f9;
+ 
+  /* Navigation */
+  --nav-hover-bg:      #f8fafc;
+  --nav-active-bg:     #eff6ff;
+  --nav-active-border: rgba(219, 234, 254, 0.8);
+ 
+  /* Inputs */
+  --input-bg: #f8fafc;
+ 
+  /* Badges */
+  --badge-bg: #f1f5f9;
+ 
+  /* Progress bars */
+  --progress-bg: #e2e8f0;
+ 
+  /* Session items */
+  --session-bg:       #f8fafc;
+  --session-hover-bg: rgba(239, 246, 255, 0.5);
+ 
+  /* Hero */
+  --hero-overlay-start: rgba(255,255,255,1);
+  --hero-overlay-end:   rgba(255,255,255,0);
+ 
+  /* AI box */
+  --ai-box-from:    #eef2ff;
+  --ai-box-to:      #faf5ff;
+  --ai-box-border:  rgba(199, 210, 254, 0.8);
+  --ai-preview-bg:  rgba(255,255,255,0.5);
+}
+ 
+.app-root--dark {
+  /* Core */
+  --bg-base:           #020617;
+  --card-bg:           #1e293b;
+  --sidebar-bg:        #0f172a;
+  --sidebar-bottom-bg: rgba(15, 23, 42, 0.5);
+ 
+  /* Text */
+  --text-primary:   #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #64748b;
+ 
+  /* Borders */
+  --border-color: #334155;
+  --border-light: #1e293b;
+ 
+  /* Navigation */
+  --nav-hover-bg:      #1e293b;
+  --nav-active-bg:     rgba(30, 58, 138, 0.2);
+  --nav-active-border: rgba(30, 58, 138, 0.3);
+ 
+  /* Inputs */
+  --input-bg: rgba(15, 23, 42, 0.5);
+ 
+  /* Badges */
+  --badge-bg: rgba(51, 65, 85, 0.5);
+ 
+  /* Progress bars */
+  --progress-bg: #334155;
+ 
+  /* Session items */
+  --session-bg:       rgba(51, 65, 85, 0.3);
+  --session-hover-bg: #334155;
+ 
+  /* Hero */
+  --hero-overlay-start: rgba(15, 23, 42, 1);
+  --hero-overlay-end:   rgba(15, 23, 42, 0);
+ 
+  /* AI box */
+  --ai-box-from:    #1e293b;
+  --ai-box-to:      rgba(30, 27, 75, 0.3);
+  --ai-box-border:  rgba(99, 102, 241, 0.2);
+  --ai-preview-bg:  rgba(15, 23, 42, 0.5);
+}
+ 
+/* ==============================
+   Base Reset
+   ============================== */
+ 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+button { font-family: inherit; }
+ 
+/* ==============================
+   App Layout
+   ============================== */
+ 
+.app-root {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
+ 
+/* Content area */
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+  overflow: hidden;
+}
+ 
+@media (min-width: 768px) {
+  .app-content           { margin-left: 256px; }
+  .app-content--collapsed { margin-left: 80px;  }
+}
+ 
+/* Header */
+.app-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(248, 250, 252, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s;
+}
+ 
+.app-root--dark .app-header {
+  background: rgba(15, 23, 42, 0.85);
+}
+ 
+.app-header__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+ 
+.app-header__menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: background 0.2s, color 0.2s;
+}
+ 
+.app-header__menu-btn:hover {
+  background: var(--nav-hover-bg);
+  color: var(--text-primary);
+}
+ 
+@media (min-width: 768px) {
+  .app-header__menu-btn { display: none; }
+}
+ 
+.app-header__page-title {
+  display: none;
+}
+ 
+@media (min-width: 768px) {
+  .app-header__page-title { display: block; }
+}
+ 
+.app-header__page-title h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+}
+ 
+.app-header__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+ 
+.app-header__avatar-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  padding: 2px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+ 
+.app-header__avatar-wrapper:hover { transform: scale(1.05); }
+ 
+.app-header__avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.app-header__avatar-letter {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+}
+ 
+.app-header__login-btn {
+  padding: 8px 24px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.app-header__login-btn:hover { background: #1d4ed8; }
+ 
+/* Main content */
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  scroll-behavior: smooth;
+}
+ 
+@media (min-width: 768px) {
+  .app-main { padding: 32px; }
+}
+ 
+.app-main__inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+}
+ 
+/* Placeholder page */
+.placeholder-page {
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  color: var(--text-muted);
+  padding-top: 80px;
+  font-size: 16px;
 }

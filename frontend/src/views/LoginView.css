@@ -1,0 +1,111 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  animation: fadeZoomIn 0.5s ease both;
+}
+ 
+.login__card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+ 
+.login__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+ 
+.login__logo {
+  width: 48px;
+  height: 48px;
+  background: #2563eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+}
+ 
+.login__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+ 
+.login__subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+ 
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+ 
+.login__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+ 
+.login__input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+ 
+.login__input::placeholder { color: var(--text-muted); }
+ 
+.login__input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+ 
+.login__btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 4px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+  transition: background 0.2s, transform 0.2s;
+}
+ 
+.login__btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.02);
+}
+ 
+@keyframes fadeZoomIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
